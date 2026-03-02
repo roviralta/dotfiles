@@ -1,0 +1,100 @@
+# ==========================================================
+# Alacritty — Nordic Minimal Theme (TOML version)
+# ==========================================================
+
+# ========================
+# Window settings
+# ========================
+[window]
+decorations = "none"
+opacity = 0.95
+dynamic_padding = true
+
+[window.padding]
+x = 12
+y = 12
+
+# ========================
+# Scrolling
+# ========================
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ========================
+# Font
+# ========================
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font]
+size = 12.5
+
+
+# ========================
+# Colors
+# ========================
+[colors.primary]
+background = "#242424"
+foreground = "#D8DEE9"
+
+[colors.cursor]
+text = "#242424"
+cursor = "#88C0D0"
+
+[colors.selection]
+text = "#242424"
+background = "#4C566A"
+
+[colors.normal]
+black   = "#3B4252"
+red     = "#BF616A"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#81A1C1"
+magenta = "#B48EAD"
+cyan    = "#88C0D0"
+white   = "#E5E9F0"
+
+[colors.bright]
+black   = "#4C566A"
+red     = "#BF616A"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#81A1C1"
+magenta = "#B48EAD"
+cyan    = "#8FBCBB"
+white   = "#ECEFF4"
+
+
+
+# ========================
+# Cursor
+# ========================
+[cursor]
+style.shape = "Beam"
+style.blinking = "Off"
+thickness = 0.15
+
+
+# ========================
+# Mouse
+# ========================
+[mouse]
+hide_when_typing = true
+
+# ========================
+# Environment
+# ========================
+[env]
+TERM = "xterm-256color"
+

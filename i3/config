@@ -1,0 +1,164 @@
+# ============================================================
+# i3 WM — Nordic Minimalist (EndeavourOS)
+# Author: Rovi
+# ============================================================
+
+# -----------------------------
+# Mod key (Windows key)
+set $mod Mod4
+
+# Font
+font pango:JetBrains Mono 10
+
+# Terminal
+set $terminal alacritty
+
+# Run autorandr at startup to apply the correct profile
+exec --no-startup-id autorandr --change
+
+# Use internal laptop speakers by default
+exec --no-startup-id pactl set-default-sink 510
+
+# -----------------------------
+# Keyboard layout (Catalan Spanish)
+exec_always --no-startup-id setxkbmap -layout es -variant cat
+
+# -----------------------------
+# Resolution
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+
+
+# -----------------------------
+# Gaps & borders
+gaps inner 2
+gaps outer 2
+smart_gaps on
+default_border pixel 2
+hide_edge_borders smart
+
+# -----------------------------
+# Nordic color palette
+set $bg            #2E3440
+set $bg-alt        #3B4252
+set $fg            #D8DEE9
+set $fg-alt        #E5E9F0
+set $blue          #81A1C1
+set $cyan          #88C0D0
+set $green         #A3BE8C
+set $red           #BF616A
+set $yellow        #EBCB8B
+set $purple        #B48EAD
+
+# -----------------------------
+# Window colors
+client.focused          $blue    $blue    $fg     $blue
+client.unfocused        $bg-alt  $bg-alt  $fg-alt $bg-alt
+client.focused_inactive $bg-alt  $bg-alt  $fg-alt $bg-alt
+client.urgent           $red     $red     $fg     $red
+client.placeholder      $bg      $bg      $fg     $bg
+
+client.background $bg
+
+# -----------------------------
+# Keybindings — basics
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec rofi -show run -theme ~/.config/rofi/config.rasi
+bindsym $mod+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+b exec firefox
+bindsym $mod+c exec code
+bindsym $mod+s exec spotify
+
+# Lock screen
+bindsym $mod+l exec --no-startup-id betterlockscreen -l
+# Shutdown
+bindsym $mod+Shift+q exec --no-startup-id systemctl poweroff
+# Reboot
+bindsym $mod+Shift+Ctrl+r exec --no-startup-id systemctl reboot
+
+
+# -----------------------------
+# Focus movement
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# -----------------------------
+# Layouts
+bindsym $mod+v split v
+bindsym $mod+h split h
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# -----------------------------
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+
+#assign [class="Alacritty"]      $ws1
+#assign [class="code-oss"]       $ws2   
+#assign [class="Brave-browser"]  $ws3
+#assign [class="Spotify"]        $ws4
+
+#exec --no-startup-id alacritty
+#exec --no-startup-id code
+#exec --no-startup-id brave
+#exec --no-startup-id spotify"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+
+# -----------------------------
+# Multimedia keys (laptop)
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/personal/volume_up.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+# -----------------------------
+# Startup applications
+exec_always --no-startup-id feh --bg-fill /home/rovi/wallpapers/nordic.png
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# -----------------------------
+# Multi-monitor (auto)
+exec_always --no-startup-id xrandr --auto
+
+# -----------------------------
+# Disable titlebars for cleanliness
+for_window [class=".*"] border pixel 2
+
+
