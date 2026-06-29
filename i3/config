@@ -13,11 +13,8 @@ font pango:JetBrains Mono 10
 # Terminal
 set $terminal alacritty
 
-# Run autorandr at startup to apply the correct profile
-exec --no-startup-id autorandr --change
-
 # Use internal laptop speakers by default
-exec --no-startup-id pactl set-default-sink 510
+exec --no-startup-id pactl set-default-sink alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Speaker__sink
 
 # -----------------------------
 # Keyboard layout (Catalan Spanish)
@@ -62,21 +59,21 @@ client.background $bg
 # -----------------------------
 # Keybindings — basics
 bindsym $mod+Return exec $terminal
-bindsym $mod+d exec rofi -show run -theme ~/.config/rofi/config.rasi
+bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/config.rasi
 bindsym $mod+q kill
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes' 'i3-msg exit'"
 bindsym $mod+b exec firefox
 bindsym $mod+c exec code
 bindsym $mod+s exec spotify
+bindsym $mod+k exec spectacle -r
 
 # Lock screen
-bindsym $mod+l exec --no-startup-id betterlockscreen -l
+bindsym $mod+l exec --no-startup-id betterlockscreen -l dim
 # Shutdown
 bindsym $mod+Shift+q exec --no-startup-id systemctl poweroff
 # Reboot
 bindsym $mod+Shift+Ctrl+r exec --no-startup-id systemctl reboot
-
 
 # -----------------------------
 # Focus movement
@@ -112,16 +109,8 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-
-#assign [class="Alacritty"]      $ws1
-#assign [class="code-oss"]       $ws2   
-#assign [class="Brave-browser"]  $ws3
-#assign [class="Spotify"]        $ws4
-
-#exec --no-startup-id alacritty
-#exec --no-startup-id code
-#exec --no-startup-id brave
-#exec --no-startup-id spotify"
+set $ws7 "7"
+set $ws8 "8"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -129,6 +118,8 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -137,26 +128,30 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
 
 # -----------------------------
 # Multimedia keys (laptop)
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/personal/volume_up.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+# Multimedia keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # -----------------------------
 # Startup applications
 exec_always --no-startup-id feh --bg-fill /home/rovi/wallpapers/nordic.png
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id killall -q picom; picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id xsettingsd
+exec --no-startup-id dunst
 
-# -----------------------------
-# Multi-monitor (auto)
-exec_always --no-startup-id xrandr --auto
+exec --no-startup-id batsignal -b -w 15 -c 10 -d 5
 
+# Multi-monitor
+exec --no-startup-id autorandr --change
 # -----------------------------
 # Disable titlebars for cleanliness
 for_window [class=".*"] border pixel 2
