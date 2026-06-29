@@ -1,108 +1,170 @@
+/* ==========================================================
+   Rofi Config - Nordic Minimalist Style
+   ========================================================== */
+
+configuration {
+    show-icons: true;
+    modi: "drun,run,window";
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+}
+
+/* -----------------------------
+   Global colors & base style
+   ----------------------------- */
+
 * {
-    backgroundcolor: #2e3440;
-    bg1: #3b4252;
-    backgroundcoloralternate: #2e3440;
-    separatorcolor: #3b4252;
-    scrollbarcolor: #3b4252;
-    foregroundcolor: #88c0d0;
-    foregroundcolorinverse: #8fbcbb;
-    selectioncolor: #3b4252;
+    bg: #2E3440;
+    bg-alt: #3B4252;
+    bg-soft: #434C5E;
+    fg: #D8DEE9;
+    fg-alt: #E5E9F0;
+    cyan: #88C0D0;
+    blue: #81A1C1;
+    border-clr: #4C566A;
+    disabled: #4C566A;
 
+    font: "JetBrainsMono Nerd Font 11";
 
-    font-size: 1px;
-    border-color: @separatorcolor;
-    background-color: @backgroundcolor;
-    text-color: @foregroundcolor;
+    background-color: transparent;
+    text-color: @fg;
+
     margin: 0;
-    margin-bottom: 0;
-    margin-top: 0;
+    padding: 0;
     spacing: 0;
 }
 
-#listview {
-    spacing: 0;
-    scrollbar: true;
-    margin: 0;
-    dynamic: true;
-
-}
+/* -----------------------------
+   Main window
+   ----------------------------- */
 
 #window {
-    background-color: @backgroundcolor;
-    border-color: @separatorcolor;
-    border: 1;
-    border-radius: 2px;
+    width: 35%;
+    location: center;
+    anchor: center;
+
+    background-color: @bg;
+    border: 1px;
+    border-color: @border-clr;
+    border-radius: 10px;
 }
+
+/* -----------------------------
+   Main layout
+   ----------------------------- */
 
 #mainbox {
-    border: 0;
+    background-color: @bg;
     padding: 0;
-    background-color: @backgroundcoloralternate;
+    spacing: 0;
 }
 
-#element {
-    padding: 16;
-    border: 0 0 1 0;
-    border-color: @separatorcolor;
-    background-color: @backgroundcoloralternate;
-}
-
-#element.selected.normal {
-    background-color: @selectioncolor;
-    text-color: @foregroundcolorinverse;
-    border-radius: 0px;
-
-    border: 0 0 1 0;
-    border-color: @separatorcolor;
-}
-
-#element.alternate.normal {
-    background-color: @backgroundcoloralternate;
-}
-
-#element.normal.active {
-    background-color: #434c5e;
-}
-
-#element.alternate.active {
-    background-color: #434c5e;
-}
-
-#element.selected.active {
-    background-color: @selectioncolor;
-    text-color: @foregroundcolorinverse;
-    border-radius: 0px;
-
-    border: 0 0 1 0;
-    border-color: @separatorcolor;
-}
+/* -----------------------------
+   Input bar
+   ----------------------------- */
 
 #inputbar {
-    border: 0 solid 0 solid 1 solid 0 solid;
-    margin: 0;
-    spacing: 0;
-    border-color: @separatorcolor;
+    background-color: @bg-alt;
+    padding: 14px;
+    spacing: 10px;
+
+    border: 0 0 1px 0;
+    border-color: @border-clr;
 }
 
 #prompt {
-    padding: 16;
-    background-color: @backgroundcoloralternate;
-    border: 0 1 0 0;
+    background-color: transparent;
+    text-color: @cyan;
 }
 
 #entry {
-    padding: 16;
+    background-color: transparent;
+    text-color: @fg;
 }
+
+#case-indicator {
+    background-color: transparent;
+    text-color: @disabled;
+}
+
+/* -----------------------------
+   List view
+   ----------------------------- */
+
+#listview {
+    background-color: @bg;
+    padding: 0;
+    margin: 0;
+    spacing: 0;
+
+    lines: 8;
+    dynamic: true;
+    scrollbar: true;
+}
+
+/* -----------------------------
+   Elements
+   ----------------------------- */
+
+#element {
+    background-color: @bg;
+    padding: 12px 16px;
+
+    border: 0 0 1px 0;
+    border-color: @bg-alt;
+}
+
+#element.normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+#element.alternate.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+#element.selected.normal {
+    background-color: @bg-alt;
+    text-color: @cyan;
+}
+
+#element.normal.active {
+    background-color: @bg-soft;
+    text-color: @fg-alt;
+}
+
+#element.alternate.active {
+    background-color: @bg-soft;
+    text-color: @fg-alt;
+}
+
+#element.selected.active {
+    background-color: @bg-alt;
+    text-color: @cyan;
+}
+
+#element-icon {
+    background-color: transparent;
+    size: 1.2em;
+    margin: 0 10px 0 0;
+}
+
+#element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+/* -----------------------------
+   Scrollbar
+   ----------------------------- */
 
 #scrollbar {
+    background-color: @bg;
+    width: 5px;
     border: 0;
-    width: 8px;
-    handle-color: @scrollbarcolor;
-    handle-width: 8px;
-    background-color: @backgroundcoloralternate;
+    handle-color: @cyan;
 }
 
-#scrollbar handle {
-    border: 1px;
-    border-color: #ff0000;
-}
+
