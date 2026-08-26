@@ -1,5 +1,5 @@
 /* ==========================================================
-   Rofi Config - Nordic Minimalist Style
+   Rofi Config - Catppuccin Mocha Minimalist Style
    ========================================================== */
 
 configuration {
@@ -15,15 +15,16 @@ configuration {
    ----------------------------- */
 
 * {
-    bg: #2E3440;
-    bg-alt: #3B4252;
-    bg-soft: #434C5E;
-    fg: #D8DEE9;
-    fg-alt: #E5E9F0;
-    cyan: #88C0D0;
-    blue: #81A1C1;
-    border-clr: #4C566A;
-    disabled: #4C566A;
+    /* Paleta Catppuccin Mocha */
+    bg: #1e1e2e;          /* Base oscura */
+    bg-alt: #313244;      /* Superficie (para selecciones) */
+    bg-soft: #45475a;     /* Superficie más clara */
+    fg: #cdd6f4;          /* Texto principal */
+    fg-alt: #bac2de;      /* Texto secundario */
+    cyan: #89b4fa;        /* Acento Azul (para selección) */
+    blue: #cba6f7;        /* Acento Lavanda/Malva */
+    border-clr: #b4befe;  /* Borde Lavanda sutil */
+    disabled: #6c7086;    /* Texto apagado */
 
     font: "JetBrainsMono Nerd Font 11";
 
@@ -45,7 +46,7 @@ configuration {
     anchor: center;
 
     background-color: @bg;
-    border: 1px;
+    border: 2px; /* Un pelín más grueso para destacar el borde Catppuccin */
     border-color: @border-clr;
     border-radius: 10px;
 }
@@ -70,7 +71,7 @@ configuration {
     spacing: 10px;
 
     border: 0 0 1px 0;
-    border-color: @border-clr;
+    border-color: @bg-soft;
 }
 
 #prompt {
@@ -166,5 +167,3 @@ configuration {
     border: 0;
     handle-color: @cyan;
 }
-
-
