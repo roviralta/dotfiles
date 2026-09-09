@@ -1,0 +1,38 @@
+# Configuración de Mako con estilo Catppuccin (Mocha)
+
+font=JetBrainsMono Nerd Font 10
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+border-size=2
+border-radius=8
+default-timeout=5000
+
+width=300
+height=150
+margin=20
+padding=15
+icons=true
+max-icon-size=32
+markup=true
+
+# Prioridad baja
+[urgency=low]
+background-color=#1e1e2e
+text-color=#bac2de
+border-color=#585b70
+default-timeout=3000
+
+# Prioridad normal
+[urgency=normal]
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+default-timeout=5000
+
+# Prioridad alta / crítica (fija en pantalla)
+[urgency=critical]
+background-color=#1e1e2e
+text-color=#f38ba8
+border-color=#f38ba8
+default-timeout=0

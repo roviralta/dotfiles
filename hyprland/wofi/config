@@ -1,0 +1,8 @@
+width=700
+height=350
+location=center
+show_icons=true
+term=alacritty
+prompt=Search applications...
+allow_images=true
+insensitive=true

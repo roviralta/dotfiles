@@ -1,0 +1,98 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-top": 8,
+    "margin-bottom": 0,
+    "margin-left": 12,
+    "margin-right": 12,
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "cpu", "memory", "custom/gpu", "temperature", "disk", "network", "battery", "tray", "custom/power"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "clock": {
+        "format": " {:%H:%M   %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio": {
+        "format": "<span color='#cba6f7'>{icon}</span> {volume}%",
+        "format-muted": "<span color='#cba6f7'></span> Muted",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "cpu": {
+        "format": "<span color='#cba6f7'></span> {usage}%",
+        "interval": 2
+    },
+
+    "memory": {
+        "format": "<span color='#cba6f7'></span> {}%",
+        "interval": 2
+    },
+
+    "custom/gpu": {
+        "format": "<span color='#cba6f7'>󰢮</span> {}%",
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+        "return-type": "",
+        "interval": 2,
+        "tooltip": true,
+        "tooltip-format": "GPU Usage: {output}%"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "format": "<span color='#cba6f7'></span> {temperatureC}°C",
+        "critical-threshold": 80,
+        "format-critical": "<span color='#f38ba8'></span> {temperatureC}°C",
+        "interval": 2
+    },
+
+    "disk": {
+        "format": "<span color='#cba6f7'>󰋊</span> {percentage_used}%",
+        "path": "/",
+        "interval": 30,
+        "tooltip-format": "{used} used out of {total} on {path} ({free} free)"
+    },
+
+    "network": {
+        "format-wifi": "<span color='#cba6f7'> </span> {essid}",
+        "format-ethernet": "<span color='#cba6f7'>󰈀</span> {ipaddr}",
+        "format-disconnected": "<span color='#cba6f7'>⚠</span> Disconnected",
+        "max-length": 15,
+        "tooltip-format": "{essid} ({ifname}) via {gwaddr}"
+    },
+
+        "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#cba6f7'>{icon}</span> {capacity}%",
+        "format-charging": "<span color='#cba6f7'>⚡</span> {capacity}%",
+        "format-plugged": "<span color='#cba6f7'></span> {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}

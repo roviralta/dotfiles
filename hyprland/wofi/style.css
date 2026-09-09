@@ -1,0 +1,71 @@
+```css
+/* ==========================================================
+   Wofi — Catppuccin Mocha Minimal
+   ========================================================== */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+/* Window */
+window {
+    background-color: #1e1e2e;
+    border: 2px solid #313244;
+    border-radius: 12px;
+}
+
+/* Main container */
+#outer-box {
+    padding: 6px;
+}
+
+/* Search */
+#input {
+    margin: 6px;
+    padding: 10px 12px;
+
+    color: #cdd6f4;
+    background-color: #181825;
+
+    border: 1px solid #313244;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+#input:focus {
+    border-color: #89b4fa;
+}
+
+/* Application list */
+#inner-box {
+    margin: 4px 6px 6px 6px;
+}
+
+/* Entries */
+#entry {
+    padding: 8px 10px;
+    border-radius: 7px;
+}
+
+/* Text */
+#text {
+    color: #cdd6f4;
+}
+
+/* Selected entry */
+#entry:selected {
+    background-color: #313244;
+}
+
+#entry:selected #text {
+    color: #89b4fa;
+}
+
+/* Icons */
+#entry image {
+    margin-right: 8px;
+}
+```
+
